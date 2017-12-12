@@ -56,6 +56,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @item.photo = nil
     @item.destroy
     respond_to do |format|
       format.html { redirect_to user_items_path(@user, @item), notice: 'Item was successfully destroyed.' }
@@ -89,6 +90,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :description, :user_id)
+      params.require(:item).permit(:title, :description, :user_id, :photo)
     end
 end

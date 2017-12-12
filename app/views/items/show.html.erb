@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Photo:</strong>
+  <%= image_tag @item.photo.url(:medium)%>
+</p>
+<p>
   <strong>Seller:</strong>
   <%= @item.user.full_name %>
 </p>

@@ -2,4 +2,6 @@
 
 <h1>Welcome to iBay!</h1>
 <h2>The internet site for all your technological needs.</h2>
-<h2>Login or sign up now</h2>
+<% unless logged_in? %>
+  <h2>Login or sign up now</h2>
+<% end %>

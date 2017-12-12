@@ -2,13 +2,15 @@
 
 <h1>Items For Sale</h1>
 
+<%= link_to 'Sell An Item', "/users/#{current_user.id}/items/new" %>
+</br>
 <% if @items.count == 0 %>
   <%= 'No items currently for sale.' %>
 <% else %>
-<%= link_to 'Sell An Item', "/users/#{current_user.id}/items/new" %>
 <table>
   <thead>
     <tr>
+      <th>Photo</th>
       <th>Title</th>
       <th>Description</th>
       <th>Seller</th>
@@ -19,6 +21,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= image_tag item.photo.url(:thumb)%></td>
         <td><%= item.title %></td>
         <td><%= item.description %></td>
         <td><%= item.user.full_name %></td>

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <% if @transactions.count == 0 %>
+        <%= 'No recent transactions' %>
+      <% else %>
+        <th>Photo</th>
+        <th>Title</th>
+        <th>Status</th>
+    </tr>
+  </thead>
+
+      <tbody>
+        <% @transactions.each do |t| %>
+
+            <tr>
+              <td><%= image_tag t.item.photo.url(:thumb)%></td>
+              <td><%= t.item.title %></td>
+              <td><%= t.status %></td>
+            </tr>
+        <% end %>
+      <% end %>
+  </tbody>
+</table>

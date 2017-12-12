@@ -23,10 +23,15 @@
     </p>
 
     <%= link_to 'Your Items For Sell', user_items_path(current_user.id) %>
+
     </br>
 
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
+    <%= link_to 'Your Transactions', trans_path %>
+
+    </br>
+    </br>
+
+    <%= link_to 'Edit', edit_user_path(@user) %>
 
   <% else %>
     <%= 'Sorry, you do not have access to this page.'  %>

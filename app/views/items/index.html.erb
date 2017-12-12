@@ -8,15 +8,17 @@
       <% if @items.count == 0 %>
         <%= 'No items for sale' %>
       <% else %>
-          <th>Title</th>
-          <th>Description</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+        <th>Photo</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th colspan="3"></th>
+    </tr>
+  </thead>
 
       <tbody>
         <% @items.each do |item| %>
           <tr>
+            <td><%= image_tag item.photo.url(:thumb)%></td>
             <td><%= item.title %></td>
             <td><%= item.description %></td>
             <td><%= link_to 'Show', "/users/#{current_user.id}/items/#{item.id}" %></td>

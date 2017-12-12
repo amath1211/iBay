@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     end
   end
   get '/all_items', to: 'all_items#index'
+  get 'trans', to: 'transactions#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
