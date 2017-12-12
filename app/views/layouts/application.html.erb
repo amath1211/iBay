@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ibay</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
-
   <body>
-    <%= render 'layouts/nav' %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+       <%= link_to 'iBay', root_path, class: 'navbar-brand' %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li class="nav-item"><%= link_to "Items For Sell", '/all_items', class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to current_user.full_name, "/users/#{current_user.id}", class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to "Log out", '/logout', method: :delete, class: 'nav-link' %></li>
+            <%# Only display the sign up and log in links if no user is logged in %>
+            <% else %>
+              <li class="nav-item"><%= link_to "Sign up", '/users/new', class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to "Log in", '/login', class: 'nav-link' %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div class="container">
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

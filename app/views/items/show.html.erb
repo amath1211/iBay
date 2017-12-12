@@ -14,9 +14,12 @@
   <strong>Description:</strong>
   <%= @item.description %>
 </p>
-<%= link_to 'Buy Item', buy_item_user_item_path(@user, @item), method: :post %>
+<% unless current_user == @item.user %>
+  <%= link_to 'Buy Item', buy_item_user_item_path(@user, @item), method: :post %>
+<% end %>
 </br>
 </br>
 </br>
-<%= link_to 'Edit', edit_user_item_path(@item) %> |
-<%= link_to 'Back', user_item_path %>
+<% if current_user == @item.user %>
+  <%= link_to 'Edit Item', "/users/#{current_user.id}/items/#{@item.id}/edit" %>
+<% end %>
