@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items For Sale</h1>
+
+<% if @items.count == 0 %>
+  <%= 'No items currently for sale.' %>
+<% else %>
+<%= link_to 'Sell An Item', "/users/#{current_user.id}/items/new" %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Seller</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= item.user.full_name %></td>
+        <td><%= link_to 'See More', "/users/#{current_user.id}/items/#{item.id}"
+        %></td>
+        <% if current_user == item.user %>
+          <td><%= link_to 'Edit', "/users/#{current_user.id}/items/#{item.id}/edit"
+          %></td>
+          <td><%= link_to 'Destroy', "/users/#{current_user.id}/items/#{item.id}",
+          method: :delete, data: { confirm:
+          'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<br>

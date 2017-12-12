@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<% if logged_in? %>
+  <% if @user == current_user %>
+  <h1><strong>Account Information</strong></h1>
+    <p>
+      <strong>Full name:</strong>
+      <%= @user.full_name %>
+    </p>
+
+    <p>
+      <strong>Username:</strong>
+      <%= @user.username %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      <%= @user.address %>
+    </p>
+
+    <%= link_to 'Your Items For Sell', user_items_path(current_user.id) %>
+    </br>
+
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+
+  <% else %>
+    <%= 'Sorry, you do not have access to this page.'  %>
+    <%= 'Please logout and login with the correct
+    account for this page.' %>
+      </br>
+      <%= link_to 'Logout', '/logout' %>
+  <% end %>
+<% else %>
+    <%= 'Please login if this page belongs to your account.' %>
+    </br>
+    <%= link_to 'Login', '/login' %>
+<% end %>
+

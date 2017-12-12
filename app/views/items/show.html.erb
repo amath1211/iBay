@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Seller:</strong>
+  <%= @item.user.full_name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+<%= link_to 'Buy Item', buy_item_user_item_path(@user, @item), method: :post %>
+</br>
+</br>
+</br>
+<%= link_to 'Edit', edit_user_item_path(@item) %> |
+<%= link_to 'Back', user_item_path %>
